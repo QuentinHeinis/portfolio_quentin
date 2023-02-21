@@ -23,17 +23,16 @@ const Carrousel = () => {
     const items = [1, 2, 3, 4]
     useEffect(() => {
         setInterval(() => {
-            if (nSelected < items.length - 1) {
-                setNSelected(nSelected + 1)
-            } else {
-                setNSelected(0)
-            }
+            if (nSelected == 0) { setNSelected(1) }
+            if (nSelected == 1) { setNSelected(2) }
+            if (nSelected == 2) { setNSelected(3) }
+            if (nSelected == 3) { setNSelected(0) }
         }, 5000);
     }, [nSelected])
 
 
     return (
-        <div className="h-screen lg:h-[80vh] xl:h-[90vh] lg:pt-[12.5vh] w-screen mx-auto lg:w-[90vw]  overflow-hidden relative">
+        <div className="h-screen lg:h-[90vh] lg:pt-[15vh] w-screen mx-auto lg:w-[90vw]  overflow-hidden relative">
             <div className='h-full flex transition-all duration-500' style={{ transform: `translate(-${nSelected * 100}%)` }} >
                 {items.map((item) => (
                     <Items key={item} num={item} />
