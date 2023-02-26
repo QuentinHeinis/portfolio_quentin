@@ -1,3 +1,37 @@
+@import url('../fonts/font.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.slash:hover .slash0 {
+    transition: none;
+    visibility: hidden;
+}
+
+.slash:hover .slash1 {
+    transform: translate(2%, 25%) skewX(10deg);
+}
+
+.slash:hover .slash4 {
+    height: 40%;
+}
+
+.slash .slash4::after {
+    content: "";
+    transform: translateX(-100%);
+}
+
+.slash:hover .slash4::after {
+    display: block;
+    transition-duration: 300ms;
+    position: absolute;
+    top: 50%;
+    height: 4px;
+    width: 100%;
+    background: #000;
+    transform: translateX(0) scale(90%);
+}
+
+.slash:hover .slash2 {
+    transform: translate(-.5%, -10%) skewX(10deg);
+}

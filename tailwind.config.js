@@ -11,7 +11,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Helvetica', 'Arial', 'sans-serif']
+        'sans': ['Helvetica', 'Arial', 'sans-serif'],
+        'antigua': "AntiguaRegular"
+      },
+      colors: {
+        black: '#101010',
+        white: '#E5E5E5'
       }
     },
   },
