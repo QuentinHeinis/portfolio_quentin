@@ -9,18 +9,9 @@ const Detail = ({ data }) => {
     if (!data) {
         router.push('/')
     }
-
-    const [nSelected, setNSelected] = useState(0)
-    const next = () => {
-        if (nSelected < data.images.length - 1) {
-            setNSelected(prev => prev + 1)
-        } else {
-            setNSelected(0)
-        }
-    }
     return (
         <div>
-            <div className='hidden md:flex px-5 h-[90vh] pt-20'>
+            <div className='flex px-5 h-[90vh] pt-20'>
                 <div className='w-4/5 h-full'>
                     <img src={data.images && data.images[index]} className='max-h-full w-full object-contain h-full' />
                 </div>
@@ -30,21 +21,6 @@ const Detail = ({ data }) => {
                     ))}
                 </div>
             </div>
-            <div className="h-screen lg:h-[90vh] lg:pt-[15vh] w-screen mx-auto lg:w-[90vw]  overflow-hidden relative md:hidden">
-                <div className='h-full flex transition-all duration-500' style={{ transform: `translate(-${nSelected * 100}%)` }} >
-                    {data.images.map((image) => (
-                        <div key={image} className="h-full w-full relative flex items-center justify-center flex-none">
-                            <img src={image} className='object-cover h-full w-full lg:w-[90%]' />
-                        </div>
-                    ))}
-                </div>
-                <div className='absolute flex bottom-4 gap-2 right-1/2 translate-x-1/2 md:hidden'>
-                    {data.images.map((item) => (
-                        <span key={item} className='h-3 w-3 bg-white border cursor-pointer rounded-full'></span>
-                    ))}
-                </div>
-            </div>
-            <button type='button' onClick={next} className='uppercase text-2xl ml-[10vw] absolute bottom-0 md:hidden'>Next</button>
             <div className='flex flex-col w-4/5 mx-auto'>
                 <p className='text-[#757575] uppercase text-2xl mt-10'>{data.type} Project</p>
                 <h1 className='text-white uppercase text-4xl mt-10'>{data.title} - {data.year}</h1>

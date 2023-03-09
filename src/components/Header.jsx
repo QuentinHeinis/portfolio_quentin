@@ -14,7 +14,7 @@ const Header = () => {
             </div>
             <div className='fixed top-0 bottom-0 right-0 left-0 bg-gray-100 flex flex-wrap justify-between items-center px-20 z-40 text-black uppercase transition-all duration-500' style={menuOpen ? { transform: 'translate(100%)' } : { transform: 'translate(0%)' }}>
                 <div className='flex flex-col gap-20'>
-                    <Link href="/" onClick={switchMenu}>
+                    <Link href="/works" onClick={switchMenu}>
                         <div className='flex gap-10 items-center'>
                             <span className='text-xl'>01</span>
                             <div className="relative slash border-b-2 hover:pb-2 flex ">
@@ -40,14 +40,15 @@ const Header = () => {
                     </Link>
                 </div>
                 <div className='flex flex-col gap-14'>
-                    <Link href='/'>
+                    <Link href='mailto:quentin@heinis.dev'>
                         <p className='text-3xl uppercase font-medium'>Contact</p>
                         <span className='text-xl text-gray-400 normal-case'>E-mail</span>
                     </Link>
-                    <Link href='/'>
-                        <p className='text-3xl uppercase font-medium'>Social media</p>
-                        <span className='text-xl text-gray-400 normal-case'>Linkedin</span>
-                    </Link>
+                    <div href='/'>
+                        <p className='text-3xl uppercase font-medium'>Social</p>
+                        <Link href='https://www.linkedin.com/in/quentinheinis/' className='text-xl text-gray-400 normal-case'>Linkedin </Link>
+                        <Link href='https://github.com/QuentinHeinis' className='text-xl text-gray-400 normal-case'>GitHub</Link>
+                    </div>
                 </div>
             </div>
         </header>
