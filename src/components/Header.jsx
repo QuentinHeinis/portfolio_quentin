@@ -14,27 +14,27 @@ const Header = () => {
             </div>
             <div className='fixed top-0 bottom-0 right-0 left-0 bg-gray-100 flex flex-wrap justify-between items-center px-20 z-40 text-black uppercase transition-all duration-500' style={menuOpen ? { transform: 'translate(100%)' } : { transform: 'translate(0%)' }}>
                 <div className='flex flex-col gap-20'>
-                    <Link href="/works" onClick={switchMenu}>
+                    <Link href="/" onClick={switchMenu}>
                         <div className='flex gap-10 items-center'>
                             <span className='text-xl'>01</span>
-                            <div className="relative slash border-b-2 hover:pb-2 flex ">
-                                <p className='text-9xl flex gap-4 pb-8 items-end leading-none relative z-10 slash0'>Works <img src="/images/flecheUp.svg" alt="" className='h-12 -translate-y-1/2' /></p>
-                                <span className='bg-gray-100 absolute h-0 flex top-1/2 scale-x-110 -translate-y-1/2 w-full z-40 transition-all after:transition-all slash4'></span>
+                            <div className="relative slash border-b-2 md:hover:pb-2 flex ">
+                                <p className='text-5xl md:text-8xl flex gap-4 pb-8 items-end leading-none relative z-10 slash0'>Home <img src="/images/flecheUp.svg" alt="" className='h-5 md:h-12 -translate-y-1/2' /></p>
+                                <span className='bg-gray-100 hidden md:flex absolute h-0  top-1/2 scale-x-110 -translate-y-1/2 w-full z-40 transition-all after:transition-all slash4'></span>
 
-                                <span className='text-9xl flex gap-4 pb-8 items-end leading-none slash absolute top-0 transition-all slash1'>Works <img src="/images/flecheUp.svg" alt="" className='h-12 -translate-y-1/2' /></span>
-                                <span className='text-9xl flex gap-4 pb-8 items-end leading-none slash absolute top-0 transition-all slash2'>Works <img src="/images/flecheUp.svg" alt="" className='h-12 -translate-y-1/2' /></span>
+                                <span className='text-5xl md:text-8xl hidden md:flex gap-4 pb-8 items-end leading-none slash absolute top-0 transition-all slash1'>Home <img src="/images/flecheUp.svg" alt="" className='h-5 md:h-12 -translate-y-1/2' /></span>
+                                <span className='text-5xl md:text-8xl hidden md:flex gap-4 pb-8 items-end leading-none slash absolute top-0 transition-all slash2'>Home <img src="/images/flecheUp.svg" alt="" className='h-5 md:h-12 -translate-y-1/2' /></span>
                             </div>
                         </div>
                     </Link>
-                    <Link href="/" onClick={switchMenu}>
+                    <Link href="/works" onClick={switchMenu}>
                         <div className='flex gap-10 items-center'>
                             <span className='text-xl'>02</span>
-                            <div className="relative slash border-b-2 hover:pb-2 flex ">
-                                <p className='text-9xl flex gap-4 pb-8 items-end leading-none relative z-10 slash0'>Contact <img src="/images/flecheUp.svg" alt="" className='h-12 -translate-y-1/2' /></p>
-                                <span className='bg-gray-100 absolute h-0 flex top-1/2 scale-x-110 -translate-y-1/2 w-full z-40 transition-all after:transition-all slash4'></span>
+                            <div className="relative slash border-b-2 md:hover:pb-2 flex ">
+                                <p className='text-5xl md:text-8xl flex gap-4 pb-8 items-end leading-none relative z-10 slash0'>Works <img src="/images/flecheUp.svg" alt="" className='h-5 md:h-12  -translate-y-1/2' /></p>
+                                <span className='bg-gray-100 absolute h-0 hidden md:flex top-1/2 scale-x-110 -translate-y-1/2 w-full z-40 transition-all after:transition-all slash4'></span>
 
-                                <span className='text-9xl flex gap-4 pb-8 items-end leading-none slash absolute top-0 transition-all slash1'>Contact <img src="/images/flecheUp.svg" alt="" className='h-12 -translate-y-1/2' /></span>
-                                <span className='text-9xl flex gap-4 pb-8 items-end leading-none slash absolute top-0 transition-all slash2'>Contact <img src="/images/flecheUp.svg" alt="" className='h-12 -translate-y-1/2' /></span>
+                                <span className='text-5xl md:text-8xl hidden md:flex gap-4 pb-8 items-end leading-none slash absolute top-0 transition-all slash1'>Works <img src="/images/flecheUp.svg" alt="" className='h-5 md:h-12  -translate-y-1/2' /></span>
+                                <span className='text-5xl md:text-8xl hidden md:flex gap-4 pb-8 items-end leading-none slash absolute top-0 transition-all slash2'>Works <img src="/images/flecheUp.svg" alt="" className='h-5 md:h-12  -translate-y-1/2' /></span>
                             </div>
                         </div>
                     </Link>

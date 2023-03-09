@@ -1,6 +1,8 @@
 import Carrousel from "@/components/Carrousel";
+import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
+import Link from "next/link";
 
 export default function Home({ data }) {
   return (
@@ -21,6 +23,7 @@ export default function Home({ data }) {
         </div>
       </div>
       <Carrousel props={data} />
+      <Link href="/works" className="flex items-center uppercase text-2xl mr-[10vw] right-0 absolute bottom-2 gap-2">See all works <ArrowRightCircleIcon className="h-6 rotate-45" /></Link>
     </>
   )
 

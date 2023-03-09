@@ -40,20 +40,20 @@ const Carrousel = ({ props }) => {
 
 
     return (
-        <div className='relative'>
+        <div>
             <div className="h-screen lg:h-[90vh] lg:pt-[15vh] w-screen mx-auto lg:w-[90vw]  overflow-hidden relative">
                 <div className='h-full flex transition-all duration-500' style={{ transform: `translate(-${nSelected * 100}%)` }} >
                     {items.map((item) => (
                         <Items key={item.title} id={item.id} name={item.title} logo={item.logo} type={item.type} tags={item.tags} image={item.images[0]} />
                     ))}
                 </div>
-                <div className='absolute flex bottom-4 gap-2 right-1/2 translate-x-1/2'>
+                <div className='absolute flex bottom-16 md:bottom-2 gap-2 right-1/2 translate-x-1/2'>
                     {items.map((item) => (
-                        <span key={item.title} className='h-3 w-3 bg-white border cursor-pointer rounded-full' style={nSelected == item.n ? { backgroundColor: 'rgba(255,255,255,1)' } : { backgroundColor: 'rgba(255,255,255,0.4)' }} onClick={() => { setNSelected(item - 1) }}></span>
+                        <span key={item.title} className='h-3 w-3 bg-white border rounded-full' style={nSelected == item.n ? { backgroundColor: 'rgba(255,255,255,1)' } : { backgroundColor: 'rgba(255,255,255,0.4)' }}></span>
                     ))}
                 </div>
             </div>
-            <button type='button' onClick={next} className='uppercase text-2xl ml-[10vw]'>Next</button>
+            <button type='button' onClick={next} className='uppercase text-2xl ml-[10vw] absolute bottom-2'>Next</button>
         </div>
     )
 }
