@@ -1,3 +1,4 @@
+import { getDownloadURL, getStorage, ref } from 'firebase/storage'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
@@ -24,13 +25,10 @@ const Items = ({ image, logo, type, name, tags }) => (
         </div>
     </div>
 )
-const Carrousel = () => {
+const Carrousel = ({ props }) => {
+    let items = props
+    console.log(items)
     const [nSelected, setNSelected] = useState(0)
-    const items = [{ n: 0, image: "/images/test2.png", logo: "/images/test2.png", type: "development", name: "TikTok", tags: ['web dev', 'webdesign'] },
-    { n: 1, image: "/images/test2.png", logo: "/images/test2.png", type: "development", name: "TikTok2", tags: ['web dev', 'webdesign'] },
-    { n: 2, image: "/images/test2.png", logo: "/images/test2.png", type: "development", name: "TikTok3", tags: ['web dev', 'webdesign'] }]
-
-
     const next = () => {
         if (nSelected < items.length - 1) {
             setNSelected(prev => prev + 1)
@@ -46,12 +44,12 @@ const Carrousel = () => {
             <div className="h-screen lg:h-[90vh] lg:pt-[15vh] w-screen mx-auto lg:w-[90vw]  overflow-hidden relative">
                 <div className='h-full flex transition-all duration-500' style={{ transform: `translate(-${nSelected * 100}%)` }} >
                     {items.map((item) => (
-                        <Items key={item.name} name={item.name} logo={item.logo} type={item.type} tags={item.tags} image={item.image} />
+                        <Items key={item.title} name={item.title} logo={item.logo} type={item.type} tags={item.tags} image={item.images[0]} />
                     ))}
                 </div>
                 <div className='absolute flex bottom-4 gap-2 right-1/2 translate-x-1/2'>
                     {items.map((item) => (
-                        <span key={item.name} className='h-3 w-3 bg-white border cursor-pointer rounded-full' style={nSelected == item.n ? { backgroundColor: 'rgba(255,255,255,1)' } : { backgroundColor: 'rgba(255,255,255,0.4)' }} onClick={() => { setNSelected(item - 1) }}></span>
+                        <span key={item.title} className='h-3 w-3 bg-white border cursor-pointer rounded-full' style={nSelected == item.n ? { backgroundColor: 'rgba(255,255,255,1)' } : { backgroundColor: 'rgba(255,255,255,0.4)' }} onClick={() => { setNSelected(item - 1) }}></span>
                     ))}
                 </div>
             </div>
