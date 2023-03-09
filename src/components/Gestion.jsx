@@ -1,9 +1,9 @@
 import useAuthStore from '@/store/authStore'
 import React, { useState } from 'react'
-import { getFirestore, collection, query, onSnapshot, orderBy, addDoc } from 'firebase/firestore'
-import { getStorage, ref, uploadString } from 'firebase/storage'
-import { async } from '@firebase/util'
+import { getFirestore, collection, addDoc, deleteDoc, doc } from 'firebase/firestore'
+import { deleteObject, getStorage, ref, uploadString } from 'firebase/storage'
 import { useRouter } from 'next/router'
+import { TrashIcon } from '@heroicons/react/24/outline'
 
 const Gestion = ({ props }) => {
     const router = useRouter()
@@ -49,7 +49,7 @@ const Gestion = ({ props }) => {
         }
         const db = getFirestore();
         const docRef = await addDoc(collection(db, 'projets'), projet);
-        router.push("/projet" + docRef.id)
+        router.push("/projet/" + docRef.id)
     }
 
     const SetImagesData = (e) => {
@@ -73,6 +73,21 @@ const Gestion = ({ props }) => {
         }
         reader.readAsDataURL(files[0])
     }
+    const removeProjet = async (projet) => {
+        if (window.confirm('Tu es sur le point de supprimer le projet ' + projet.title)) {
+
+            const firestore = getFirestore();
+            await deleteDoc(doc(firestore, "projets", projet.id));
+            const storage = getStorage();
+            let docRef = ref(storage, projet.logo);
+            await deleteObject(docRef);
+            for (let i = 0; i < projet.images.length; i++) {
+                let docRef = ref(storage, projet.images[i]);
+                await deleteObject(docRef);
+            }
+            window.location.reload()
+        }
+    }
     return (
         <>
             <div className='flex justify-between w-full pt-40 px-14'>
@@ -95,6 +110,8 @@ const Gestion = ({ props }) => {
                                     <td className='border border-white w-28 text-center'>langage/logiciel</td>
                                     <td className='border border-white w-28 text-center'>description</td>
                                     <td className='border border-white w-28 text-center'>n</td>
+                                    <td className='border border-white w-28 text-center'>edit</td>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -112,6 +129,11 @@ const Gestion = ({ props }) => {
                                         <td className='border border-white w-28 text-center'>{projet.langage}</td>
                                         <td className='border border-white w-28 text-center'>{projet.desc.replace('\\n', '\n')}</td>
                                         <td className='border border-white w-28 text-center'>{projet.n}</td>
+                                        <td className='border border-white w-28'>
+                                            <div className='flex justify-center items-center'>
+                                                <TrashIcon className='h-10' onClick={() => removeProjet(projet)} />
+                                            </div>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
