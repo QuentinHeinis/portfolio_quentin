@@ -5,7 +5,7 @@ const Items = ({ id, image, logo, type, name, tags }) => (
     <div className='h-full w-full relative flex items-center justify-center flex-none'>
         <Link href={'/projet/' + id} className="flex flex-col items-center gap-2 cursor-pointer">
             <div className='uppercase'>{type}</div>
-            <h2 className='text-6xl font-bold font-antigua'>{name}</h2>
+            <h2 className='text-6xl font-bold font-antigua text-center'>{name}</h2>
             <div className='uppercase flex gap-4 text-xs'>
                 {tags.map((item) => (
                     <p className='border-white border rounded-full px-1 py-1' key={item}>{item}</p>
@@ -49,7 +49,7 @@ const Carrousel = ({ props }) => {
                     ))}
                 </div>
             </div>
-            <button type='button' onClick={next} className='uppercase text-2xl ml-[10vw] absolute bottom-2' >Next</button>
+            <button type='button' onClick={next} className='uppercase text-2xl ml-[10vw] absolute bottom-2' >Suivant</button>
         </div>
     )
 }

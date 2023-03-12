@@ -3,6 +3,8 @@ import { getDownloadURL, getStorage, ref } from 'firebase/storage'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import OtherProject from '@/components/OtherProject'
+import { LinkIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 const Detail = ({ data, otherData }) => {
     console.log(otherData)
@@ -12,42 +14,46 @@ const Detail = ({ data, otherData }) => {
         router.push('/')
     }
     return (
+
         <div>
-            <div className='flex h-[75vh] w-4/5 mx-auto pt-20 gap-4'>
-                <div className='w-4/5 h-full'>
+            <div className='flex flex-col md:flex-row h-[75vh] w-4/5  pt-10 gap-4 mx-auto'>
+                <div className='w-full md:w-4/5 h-full'>
                     <img src={data.images && data.images[index]} className='max-h-full w-full object-contain h-full' />
                 </div>
-                <div className='w-1/5 flex flex-col justify-center'>
+                <div className='w-full md:mt-0 gap-1 md:w-1/5  flex md:flex-col justify-center md:gap-10'>
                     {data.images?.map((item, i) => (
-                        <img key={i} src={item} className={i === index ? 'hidden' : 'block w-full h-1/6 object-contain cursor-pointer'} onClick={() => setIndex(i)} />
+                        <img key={i} src={item} className={i === index ? 'hidden' : 'block w-full max-w-[50%] md:max-w-full object-contain cursor-pointer'} onClick={() => setIndex(i)} />
                     ))}
                 </div>
             </div>
             <div className='flex flex-col w-4/5 mx-auto'>
-                <p className='text-[#757575] uppercase text-2xl mt-10'>{data.type} Project</p>
-                <h1 className='text-white uppercase text-4xl mt-10'>{data.title} - {data.year}</h1>
+                <p className='text-[#757575] uppercase text-2xl mt-10'>Projet {data.type}</p>
+                <div class="flex justify-between items-center mt-10">
+                    <h1 className='text-white uppercase text-4xl'>{data.title} - {data.year}</h1>
+                    {data?.link && <Link href={data.link}><LinkIcon className='h-6' /></Link>}
+                </div>
                 <div className="flex w-full justify-between mt-24">
-                    <h2 className='text-[#757575] uppercase text-2xl'>Language/Software used</h2>
+                    <h2 className='text-[#757575] uppercase text-2xl'>Langage/Logiciel utilisé</h2>
                     <span className='text-[#757575] uppercase text-2xl'>01</span>
                 </div>
-                <p className='text-2xl pt-6'>{data.langage}</p>
+                <p className='text-lg md:text-2xl pt-6'>{data.langage}</p>
                 <span className='w-full h-[2px] bg-[#757575] my-6'></span>
                 <div className="flex w-full justify-between">
-                    <h3 className='text-[#757575] uppercase text-2xl'>Year</h3>
+                    <h3 className='text-[#757575] uppercase text-2xl'>Année</h3>
                     <span className='text-[#757575] uppercase text-2xl'>02</span>
                 </div>
-                <p className='text-2xl pt-6'>{data.year}</p>
+                <p className='text-lg md:text-2xl pt-6'>{data.year}</p>
                 <span className='w-full h-[2px] bg-[#757575] my-6'></span>
                 <div className="flex w-full justify-between mb-6">
-                    <h3 className='text-[#757575] uppercase text-2xl'>Project Description</h3>
+                    <h3 className='text-[#757575] uppercase text-2xl'>Description du projet</h3>
                     <span className='text-[#757575] uppercase text-2xl '>03</span>
                 </div>
                 {data.desc.split('\\n').map((paragraph) => (
 
-                    <p className='text-2xl first-letter:uppercase'>{paragraph}</p>
+                    <p className='text-lg md:text-2xl first-letter:uppercase'>{paragraph}</p>
                 ))}
                 <span className='w-full h-[2px] bg-[#757575] my-6'></span>
-                <p className='text-2xl uppercase'>Copyright &copy; Quentin Heinis</p>
+                <p className='text-xl md:text-2xl uppercase'>Copyright &copy; Quentin Heinis</p>
             </div>
 
             <OtherProject props={otherData} />

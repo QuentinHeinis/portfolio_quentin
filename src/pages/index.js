@@ -18,12 +18,12 @@ export default function Home({ data }) {
             </div>
           </div>
           <div className='uppercase text-[#757575] text-xs lg:text-lg'>
-            Web develloper and programmer
+            Web développeur et programmeur
           </div>
         </div>
       </div>
       <Carrousel props={data} />
-      <Link href="/works" className="flex items-center uppercase text-2xl mr-[10vw] right-0 absolute bottom-2 gap-2">See all works <ArrowRightCircleIcon className="h-6 rotate-45" /></Link>
+      <Link href="/works" className="flex items-center uppercase text-2xl mr-[10vw] right-0 absolute bottom-2 gap-2">Voir tout<ArrowRightCircleIcon className="h-6 rotate-45" /></Link>
     </>
   )
 

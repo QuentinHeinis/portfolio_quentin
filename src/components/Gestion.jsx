@@ -19,6 +19,7 @@ const Gestion = ({ props }) => {
     const [type, settype] = useState('')
     const [tags, settags] = useState('')
     const [isHomepage, setisHomepage] = useState('')
+    const [plink, setplink] = useState('')
     const { removeUser } = useAuthStore()
     const upload = async (e) => {
         e.preventDefault()
@@ -45,7 +46,8 @@ const Gestion = ({ props }) => {
             year: year,
             type: type,
             tags: tags.split('\n'),
-            n: isHomepage
+            n: isHomepage,
+            link: plink
         }
         const db = getFirestore();
         const docRef = await addDoc(collection(db, 'projets'), projet);
@@ -89,7 +91,7 @@ const Gestion = ({ props }) => {
         }
     }
     return (
-        <>
+        <div>
             <div className='flex justify-between w-full pt-40 px-14'>
                 <button onClick={() => removeUser()} >se déconnecter</button>
                 {AddProject ? <button onClick={() => setAddProject(prev => !prev)} >Add</button> :
@@ -109,6 +111,7 @@ const Gestion = ({ props }) => {
                                     <td className='border border-white w-28 text-center'>type</td>
                                     <td className='border border-white w-28 text-center'>langage/logiciel</td>
                                     <td className='border border-white w-28 text-center'>description</td>
+                                    <td className='border border-white w-28 text-center'>lien</td>
                                     <td className='border border-white w-28 text-center'>n</td>
                                     <td className='border border-white w-28 text-center'>edit</td>
 
@@ -128,6 +131,7 @@ const Gestion = ({ props }) => {
                                         <td className='border border-white w-28 text-center'>{projet.type}</td>
                                         <td className='border border-white w-28 text-center'>{projet.langage}</td>
                                         <td className='border border-white w-28 text-center'>{projet.desc.replace('\\n', '\n')}</td>
+                                        <td className='border border-white w-28 text-center'>{projet.link}</td>
                                         <td className='border border-white w-28 text-center'>{projet.n}</td>
                                         <td className='border border-white w-28'>
                                             <div className='flex justify-center items-center'>
@@ -156,13 +160,14 @@ const Gestion = ({ props }) => {
                             <textarea placeholder='Description' onChange={e => setdesc(e.target.value)} required></textarea>
                             <textarea placeholder='tags' onChange={e => settags(e.target.value)} required></textarea>
                             <input type="number" placeholder='n' onChange={e => setisHomepage(e.target.value)} />
+                            <input type="text" placeholder='Lien du projet' onChange={e => setplink(e.target.value)} />
 
                             <button className='bg-white'>Upload</button>
                         </div>
                     </form>
                 </div>
             }
-        </>
+        </div>
     )
 }
 

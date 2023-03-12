@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 const works = ({ data }) => {
   const [index, setIndex] = useState(0)
   return (
-    <div className='flex flex-col gap-6'>
+    <div className='flex flex-col gap-6 pb-10'>
       {data.map((projet) => (
         <ProjetPres props={projet} key={projet.title} />
       ))}
