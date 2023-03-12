@@ -7,12 +7,12 @@ const ProjetPres = ({ props }) => {
     const [index, setIndex] = useState(0)
     const [viewDetails, setViewDetails] = useState(false)
     return (
-        <div className='flex flex-col'>
-            <div className='flex px-5 h-[75vh] pt-10'>
+        <div className='flex flex-col items-center'>
+            <div className='flex h-[75vh] w-4/5  pt-10 gap-4'>
                 <div className='w-4/5 h-full'>
                     <img src={projet.images && projet.images[index]} className='max-h-full w-full object-contain h-full' />
                 </div>
-                <div className='w-1/5 flex flex-col justify-between'>
+                <div className='w-1/5 flex flex-col justify-center gap-10'>
                     {projet.images?.map((item, i) => (
                         <img key={i} src={item} className={i === index ? 'hidden' : 'block w-full h-1/6 object-contain cursor-pointer'} onClick={() => setIndex(i)} />
                     ))}

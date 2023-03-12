@@ -11,11 +11,11 @@ const Detail = ({ data }) => {
     }
     return (
         <div>
-            <div className='flex px-5 h-[90vh] pt-20'>
+            <div className='flex h-[75vh] w-4/5 mx-auto pt-20 gap-4'>
                 <div className='w-4/5 h-full'>
                     <img src={data.images && data.images[index]} className='max-h-full w-full object-contain h-full' />
                 </div>
-                <div className='w-1/5 flex flex-col justify-between'>
+                <div className='w-1/5 flex flex-col justify-center'>
                     {data.images?.map((item, i) => (
                         <img key={i} src={item} className={i === index ? 'hidden' : 'block w-full h-1/6 object-contain cursor-pointer'} onClick={() => setIndex(i)} />
                     ))}
