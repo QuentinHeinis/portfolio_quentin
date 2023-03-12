@@ -15,7 +15,7 @@ const Detail = ({ data, otherData }) => {
     }
     return (
 
-        <div>
+        <div className='overflow-hidden'>
             <div className='flex flex-col md:flex-row h-[75vh] w-4/5  pt-10 gap-4 mx-auto'>
                 <div className='w-full md:w-4/5 h-full'>
                     <img src={data.images && data.images[index]} className='max-h-full w-full object-contain h-full' />
