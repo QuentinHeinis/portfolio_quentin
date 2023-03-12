@@ -6,6 +6,9 @@ import 'aos/dist/aos.css';
 import { initializeApp } from "firebase/app";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis';
 import Lenis from '@studio-freight/lenis'
+import { SwitchTransition, Transition } from 'react-transition-group'
+import gsap from 'gsap'
+import { useRouter } from 'next/router'
 
 function ScrollListener() {
   useLenis(({ scroll }) => {
@@ -33,6 +36,9 @@ const app = initializeApp(firebaseConfig)
 
 export default function App({ Component, pageProps }) {
 
+
+  //lenis setup
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -57,11 +63,62 @@ export default function App({ Component, pageProps }) {
     AOS.init()
     AOS.refresh()
   }, [])
+
+
+
+  const router = useRouter()
+
+  const onPageEnter = (element) => {
+    gsap.fromTo(
+      element,
+      {
+        y: 50,
+        autoAlpha: 0,
+        ease: 'power3.out',
+      },
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: 1,
+        ease: 'power3.out',
+      }
+    )
+  }
+
+  const onPageExit = (element) => {
+    gsap.fromTo(
+      element,
+      {
+        y: 0,
+        autoAlpha: 1,
+        ease: 'power3.out',
+      },
+      {
+        y: -50,
+        autoAlpha: 0,
+        duration: 0.5,
+        ease: 'power3.inOut',
+      }
+    )
+  }
+
+
   return (
     <ReactLenis root>
       <div className='min-h-screen bg-black text-white font-sans'>
         <Header />
-        <Component {...pageProps} />
+        <SwitchTransition>
+          <Transition
+            key={router.pathname}
+            timeout={500}
+            in={true}
+            onEnter={onPageEnter}
+            onExit={onPageExit}
+            mountOnEnter={true}
+            unmountOnExit={true}>
+            <Component {...pageProps} />
+          </Transition>
+        </SwitchTransition>
       </div>
     </ReactLenis>
 
