@@ -64,7 +64,6 @@ const Gestion = ({ props }) => {
             }
             reader.readAsDataURL(files[i])
         }
-        console.log(images)
         setimagesData(images)
     }
     const SetLogoData = (e) => {

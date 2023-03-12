@@ -15,7 +15,6 @@ const Login = () => {
                 addUser(user)
             })
             .catch((error) => {
-                console.log(error);
             });
 
     }

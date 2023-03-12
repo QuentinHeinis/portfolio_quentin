@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 
 function ScrollListener() {
   useLenis(({ scroll }) => {
-    console.log('Current scroll position', scroll)
+    // console.log('Current scroll position', scroll)
   })
 
   return null

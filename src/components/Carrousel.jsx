@@ -23,7 +23,6 @@ const Items = ({ id, image, logo, type, name, tags }) => (
 )
 const Carrousel = ({ props }) => {
     let items = props
-    console.log(items)
     const [nSelected, setNSelected] = useState(0)
     const next = () => {
         if (nSelected < items.length - 1) {

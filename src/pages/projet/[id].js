@@ -7,7 +7,6 @@ import { LinkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 
 const Detail = ({ data, otherData }) => {
-    console.log(otherData)
     const router = useRouter()
     const [index, setIndex] = useState(0)
     if (!data) {
