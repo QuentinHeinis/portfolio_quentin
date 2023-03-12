@@ -5,8 +5,10 @@ import { useRouter } from 'next/router'
 import OtherProject from '@/components/OtherProject'
 import { LinkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import Head from 'next/head'
 
 const Detail = ({ data, otherData }) => {
+
     const router = useRouter()
     const [index, setIndex] = useState(0)
     if (!data) {
@@ -14,7 +16,11 @@ const Detail = ({ data, otherData }) => {
     }
     return (
 
+
         <div className='overflow-hidden'>
+            <Head>
+                <title>Projet - {data.title}</title>
+            </Head>
             <div className='flex flex-col md:flex-row h-[75vh] w-4/5  pt-10 gap-4 mx-auto'>
                 <div className='w-full md:w-4/5 h-full'>
                     <img src={data.images && data.images[index]} className='max-h-full w-full object-contain h-full' />

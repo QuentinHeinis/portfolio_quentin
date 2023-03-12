@@ -1,6 +1,7 @@
 import ProjetPres from '@/components/ProjetPres'
 import { collection, getDocs, getFirestore, query } from 'firebase/firestore'
 import { getDownloadURL, getStorage, ref } from 'firebase/storage'
+import Head from 'next/head'
 import React, { useState } from 'react'
 
 
@@ -8,6 +9,9 @@ const works = ({ data }) => {
   const [index, setIndex] = useState(0)
   return (
     <div className='flex flex-col gap-6 pb-10'>
+      <Head>
+        <title>Projets</title>
+      </Head>
       {data.map((projet) => (
         <ProjetPres props={projet} key={projet.title} />
       ))}

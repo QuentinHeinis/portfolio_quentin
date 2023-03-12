@@ -2,11 +2,15 @@ import Carrousel from "@/components/Carrousel";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
+import Head from "next/head";
 import Link from "next/link";
 
 export default function Home({ data }) {
   return (
     <>
+      <Head>
+        <title>Quentin Heinis</title>
+      </Head>
       <div className="flex pt-10 px-4 lg:px-24 w-screen absolute top-0 z-30">
         <div className='flex lg:items-end flex-col lg:flex-row lg:gap-3'>
           <div className='flex flex-col lg:text-2xl'>
