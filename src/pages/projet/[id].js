@@ -32,31 +32,48 @@ const Detail = ({ data, otherData }) => {
                     <h1 className='text-white uppercase text-4xl'>{data.title} - {data.year}</h1>
                     {data?.link && <Link href={data.link}><LinkIcon className='h-6' /></Link>}
                 </div>
-                <div className="flex w-full justify-between mt-24">
-                    <h2 className='text-[#757575] uppercase text-2xl'>Langage/Logiciel utilisé</h2>
-                    <span className='text-[#757575] uppercase text-2xl'>01</span>
+                <div data-aos="fade-up">
+                    <div className="flex w-full justify-between mt-24">
+                        <h2 className='text-[#757575] uppercase text-2xl'>Langage/Logiciel utilisé</h2>
+                        <span className='text-[#757575] uppercase text-2xl'>01</span>
+                    </div>
+                    <p className='text-lg md:text-2xl pt-6'>{data.langage}</p>
                 </div>
-                <p className='text-lg md:text-2xl pt-6'>{data.langage}</p>
                 <span className='w-full h-[2px] bg-[#757575] my-6'></span>
-                <div className="flex w-full justify-between">
-                    <h3 className='text-[#757575] uppercase text-2xl'>Année</h3>
-                    <span className='text-[#757575] uppercase text-2xl'>02</span>
+                <div data-aos="fade-up">
+                    <div className="flex w-full justify-between">
+                        <h3 className='text-[#757575] uppercase text-2xl'>Tags</h3>
+                        <span className='text-[#757575] uppercase text-2xl'>02</span>
+                    </div>
+                    <p className='text-lg md:text-2xl flex gap-2 pt-6'>{data.tags.map((tag) => (
+                        <div>{tag}</div>
+                    ))}</p>
                 </div>
-                <p className='text-lg md:text-2xl pt-6'>{data.year}</p>
                 <span className='w-full h-[2px] bg-[#757575] my-6'></span>
-                <div className="flex w-full justify-between mb-6">
-                    <h3 className='text-[#757575] uppercase text-2xl'>Description du projet</h3>
-                    <span className='text-[#757575] uppercase text-2xl '>03</span>
+                <div data-aos="fade-up">
+                    <div className="flex w-full justify-between">
+                        <h3 className='text-[#757575] uppercase text-2xl'>Année</h3>
+                        <span className='text-[#757575] uppercase text-2xl'>03</span>
+                    </div>
+                    <p className='text-lg md:text-2xl pt-6'>{data.year}</p>
                 </div>
-                {data.desc.split('\\n').map((paragraph) => (
-
-                    <p className='text-lg md:text-2xl first-letter:uppercase'>{paragraph}</p>
-                ))}
+                <span className='w-full h-[2px] bg-[#757575] my-6'></span>
+                <div data-aos="fade-up">
+                    <div className="flex w-full justify-between mb-6">
+                        <h3 className='text-[#757575] uppercase text-2xl'>Description du projet</h3>
+                        <span className='text-[#757575] uppercase text-2xl '>04</span>
+                    </div>
+                    {data.desc.split('\n').map((paragraph) => (
+                        <p className='text-lg md:text-2xl first-letter:uppercase'>{paragraph}</p>
+                    ))}
+                </div>
                 <span className='w-full h-[2px] bg-[#757575] my-6'></span>
                 <p className='text-xl md:text-2xl uppercase'>Copyright &copy; Quentin Heinis</p>
             </div>
 
-            <OtherProject props={otherData} />
+            <div data-aos="fade-up">
+                <OtherProject props={otherData} />
+            </div>
         </div>
     )
 }

@@ -7,18 +7,18 @@ const ProjetPres = ({ props }) => {
     const [index, setIndex] = useState(0)
     const [viewDetails, setViewDetails] = useState(false)
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center overflow-hidden'>
             <div className='flex flex-col md:flex-row h-[75vh] w-4/5  pt-10 gap-4'>
-                <div className='w-full md:w-4/5 h-full'>
+                <div className='w-full md:w-4/5 h-full' data-aos="fade-up">
                     <img src={projet.images && projet.images[index]} className='max-h-full w-full object-contain h-full' />
                 </div>
-                <div className='w-full md:mt-0 gap-1 md:w-1/5  flex md:flex-col justify-center md:gap-10'>
+                <div className='w-full md:mt-0 gap-1 md:w-1/5  flex md:flex-col justify-center md:gap-10' data-aos="fade-up">
                     {projet.images?.map((item, i) => (
-                        <img key={i} src={item} className={i === index ? 'hidden' : 'block w-full max-w-[50%] md:max-w-full object-contain cursor-pointer'} onClick={() => setIndex(i)} />
+                        <img key={i} src={item} className={i === index ? 'hidden' : 'flex w-full max-w-[50%] md:max-w-full object-contain cursor-pointer'} onClick={() => setIndex(i)} />
                     ))}
                 </div>
             </div>
-            <div className='flex flex-col w-4/5 mx-auto'>
+            <div className='flex flex-col w-4/5 mx-auto' data-aos="fade-up">
                 <p className='text-[#757575] uppercase text-2xl mt-6'>Projet {projet.type}</p>
                 <h1 className='text-white uppercase text-4xl'>{projet.title} - {projet.year}</h1>
                 <span className='w-full h-[2px] bg-[#757575] my-3'></span>
