@@ -1,4 +1,3 @@
-import { getDownloadURL, getStorage, ref } from 'firebase/storage'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
@@ -14,9 +13,6 @@ const Items = ({ id, image, logo, type, name, tags }) => (
                 ))}
             </div>
             <img src={logo} alt={name + "'s Logo"} className='h-16' />
-            {/* <Link href="/" className='bg-red-500 bg-opacity-40 h-16 w-16 px-4 rounded-full flex items-center justify-center mt-4'>
-                <img src="/images/fleche.svg" alt="" className='h-full w-full' />
-            </Link> */}
         </Link>
         <div className='absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center -z-10'>
             <img src="/images/cach.png" alt="" className='hidden lg:block absolute top-0 -translate-y-2/3' />

@@ -18,7 +18,7 @@ const Gestion = ({ props }) => {
     const [year, setyear] = useState('')
     const [type, settype] = useState('')
     const [tags, settags] = useState('')
-    const [isHomepage, setisHomepage] = useState()
+    const [isHomepage, setisHomepage] = useState('')
     const { removeUser } = useAuthStore()
     const upload = async (e) => {
         e.preventDefault()

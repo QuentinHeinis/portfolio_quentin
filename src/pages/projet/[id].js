@@ -1,9 +1,11 @@
-import { doc, getDoc, getFirestore } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, getFirestore, limit, query, where } from 'firebase/firestore'
 import { getDownloadURL, getStorage, ref } from 'firebase/storage'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import OtherProject from '@/components/OtherProject'
 
-const Detail = ({ data }) => {
+const Detail = ({ data, otherData }) => {
+    console.log(otherData)
     const router = useRouter()
     const [index, setIndex] = useState(0)
     if (!data) {
@@ -47,6 +49,8 @@ const Detail = ({ data }) => {
                 <span className='w-full h-[2px] bg-[#757575] my-6'></span>
                 <p className='text-2xl uppercase'>Copyright &copy; Quentin Heinis</p>
             </div>
+
+            <OtherProject props={otherData} />
         </div>
     )
 }
@@ -74,9 +78,23 @@ export const getServerSideProps = async ({ params: { id } }) => {
                 data.logo = url;
             })
     }
+    let otherData = []
+    const q = query(collection(firestore, "projets"), where("title", "!=", data.title), limit(1));
+    const querySnapshot = await getDocs(q)
+    querySnapshot.forEach((doc) =>
+        otherData.push({ id: doc.id, ...doc.data() }
+        ))
+    const storage = getStorage();
+    const spaceRef = ref(storage, otherData[0].images[0]);
+    await getDownloadURL(spaceRef)
+        .then((url) => {
+            otherData[0].images[0] = url;
+        })
+
+
 
     return {
-        props: { data }
+        props: { data, otherData }
     }
 }
 

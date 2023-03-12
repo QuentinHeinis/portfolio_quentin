@@ -28,7 +28,7 @@ const ProjetPres = ({ props }) => {
                 </div>
                 {viewDetails && (
                     <div>{projet.desc.split('\\n').map((para) => (
-                        <p className='first-letter:uppercase'>{para}</p>
+                        <p className='first-letter:uppercase' key={para}>{para}</p>
                     ))}</div>
                 )}
 
