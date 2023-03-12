@@ -51,7 +51,7 @@ const Detail = ({ data, otherData }) => {
                         <span className='text-[#757575] uppercase text-2xl'>02</span>
                     </div>
                     <p className='text-lg md:text-2xl flex gap-2 pt-6'>{data.tags.map((tag) => (
-                        <div>{tag}</div>
+                        <span key={tag}>{tag}</span>
                     ))}</p>
                 </div>
                 <span className='w-full h-[2px] bg-[#757575] my-6'></span>
@@ -69,7 +69,7 @@ const Detail = ({ data, otherData }) => {
                         <span className='text-[#757575] uppercase text-2xl '>04</span>
                     </div>
                     {data.desc.split('\n').map((paragraph) => (
-                        <p className='text-lg md:text-2xl first-letter:uppercase'>{paragraph}</p>
+                        <p className='text-lg md:text-2xl first-letter:uppercase' key={paragraph}>{paragraph}</p>
                     ))}
                 </div>
                 <span className='w-full h-[2px] bg-[#757575] my-6'></span>
