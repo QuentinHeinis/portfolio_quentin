@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Home({ data }) {
   return (
     <>
-      <div class="flex pt-10 px-4 lg:px-24 w-screen absolute top-0 z-30">
+      <div className="flex pt-10 px-4 lg:px-24 w-screen absolute top-0 z-30">
         <div className='flex lg:items-end flex-col lg:flex-row lg:gap-3'>
           <div className='flex flex-col lg:text-2xl'>
             <div>

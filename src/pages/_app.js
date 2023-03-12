@@ -1,7 +1,18 @@
 import Header from '@/components/Header'
 import '@/styles/globals.css'
 import { useEffect, useState } from 'react'
+
+
+//import AOS
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
+//import firebase
+
 import { initializeApp } from "firebase/app";
+import { ReactLenis, useLenis } from '@studio-freight/react-lenis';
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_APIKEY,
   authDomain: process.env.NEXT_PUBLIC_AUTH,
@@ -12,17 +23,21 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig)
 
+
+
 export default function App({ Component, pageProps }) {
-  const [isSSR, setIsSSR] = useState(true)
 
   useEffect(() => {
-    setIsSSR(false)
+    AOS.init()
+    AOS.refresh()
   }, [])
-  if (isSSR) return null
   return (
     <div className='min-h-screen bg-black text-white font-sans'>
+      {/* <ReactLenis root>
+      </ReactLenis> */}
       <Header />
       <Component {...pageProps} />
     </div>
+
   )
 }

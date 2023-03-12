@@ -24,19 +24,19 @@ const Detail = ({ data }) => {
             <div className='flex flex-col w-4/5 mx-auto'>
                 <p className='text-[#757575] uppercase text-2xl mt-10'>{data.type} Project</p>
                 <h1 className='text-white uppercase text-4xl mt-10'>{data.title} - {data.year}</h1>
-                <div class="flex w-full justify-between mt-24">
+                <div className="flex w-full justify-between mt-24">
                     <h2 className='text-[#757575] uppercase text-2xl'>Language/Software used</h2>
                     <span className='text-[#757575] uppercase text-2xl'>01</span>
                 </div>
                 <p className='text-2xl pt-6'>{data.langage}</p>
                 <span className='w-full h-[2px] bg-[#757575] my-6'></span>
-                <div class="flex w-full justify-between">
+                <div className="flex w-full justify-between">
                     <h3 className='text-[#757575] uppercase text-2xl'>Year</h3>
                     <span className='text-[#757575] uppercase text-2xl'>02</span>
                 </div>
                 <p className='text-2xl pt-6'>{data.year}</p>
                 <span className='w-full h-[2px] bg-[#757575] my-6'></span>
-                <div class="flex w-full justify-between mb-6">
+                <div className="flex w-full justify-between mb-6">
                     <h3 className='text-[#757575] uppercase text-2xl'>Project Description</h3>
                     <span className='text-[#757575] uppercase text-2xl '>03</span>
                 </div>

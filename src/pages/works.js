@@ -9,7 +9,7 @@ const works = ({ data }) => {
   return (
     <div className='flex flex-col gap-6'>
       {data.map((projet) => (
-          <ProjetPres props={projet} />
+        <ProjetPres props={projet} key={projet.title} />
       ))}
     </div>
   )

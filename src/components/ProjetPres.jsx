@@ -33,7 +33,7 @@ const ProjetPres = ({ props }) => {
                 )}
 
                 <span className='w-full h-[2px] bg-[#757575] my-3'></span>
-                <Link href={'/projet/' + projet.id} className="flex justify-end items-center gap-4 text-[#757575]">See More <ArrowRightIcon className='h-3'/></Link>
+                <Link href={'/projet/' + projet.id} className="flex justify-end items-center gap-4 text-[#757575]">See More <ArrowRightIcon className='h-3' /></Link>
 
             </div>
         </div>

@@ -53,7 +53,7 @@ const Carrousel = ({ props }) => {
                     ))}
                 </div>
             </div>
-            <button type='button' onClick={next} className='uppercase text-2xl ml-[10vw] absolute bottom-2'>Next</button>
+            <button type='button' onClick={next} className='uppercase text-2xl ml-[10vw] absolute bottom-2' >Next</button>
         </div>
     )
 }
