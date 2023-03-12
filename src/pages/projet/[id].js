@@ -33,7 +33,7 @@ const Detail = ({ data, otherData }) => {
             </div>
             <div className='flex flex-col w-4/5 mx-auto'>
                 <p className='text-[#757575] uppercase text-2xl mt-10'>Projet {data.type}</p>
-                <div class="flex justify-between items-center mt-10">
+                <div className="flex justify-between items-center mt-10">
                     <h1 className='text-white uppercase text-4xl'>{data.title} - {data.year}</h1>
                     {data?.link && <Link href={data.link}><LinkIcon className='h-6' /></Link>}
                 </div>
