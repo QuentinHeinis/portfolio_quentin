@@ -3,11 +3,11 @@ import { Html, Head, Main, NextScript } from 'next/document'
 export default function Document() {
   return (
     <Html lang="en">
-      <Head />
+      <Head >
+        <link rel="icon" href="/Q-logo.ico" />
+      </Head>
       <body>
-        <Main >
-          <link rel="icon" href="/Q-logo.ico" />
-        </Main>
+        <Main />
         <NextScript />
       </body>
     </Html>
