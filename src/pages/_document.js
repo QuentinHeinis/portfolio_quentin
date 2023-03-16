@@ -5,7 +5,9 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <body>
-        <Main />
+        <Main >
+          <link rel="icon" href="/Q-logo.ico" />
+        </Main>
         <NextScript />
       </body>
     </Html>

@@ -160,7 +160,7 @@ const Gestion = ({ props }) => {
                             <textarea placeholder='tags' onChange={e => settags(e.target.value)} required></textarea>
                             <input type="number" placeholder='n' onChange={e => setisHomepage(e.target.value)} />
                             <input type="text" placeholder='Lien du projet' onChange={e => setplink(e.target.value)} />
-
+                                            
                             <button className='bg-white'>Upload</button>
                         </div>
                     </form>

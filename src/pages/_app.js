@@ -52,8 +52,6 @@ export default function App({ Component, pageProps }) {
       infinite: false,
     })
 
-
-
     function raf(time) {
       lenis.raf(time)
       requestAnimationFrame(raf)
