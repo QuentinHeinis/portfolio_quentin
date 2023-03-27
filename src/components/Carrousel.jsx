@@ -15,8 +15,8 @@ const Items = ({ id, image, logo, type, name, tags }) => (
             <img src={logo} alt={name + "'s Logo"} className='h-16' />
         </Link>
         <div className='absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center -z-10'>
-            <img src="/images/cach.png" alt="" className='hidden lg:block absolute top-0 -translate-y-2/3' />
-            <img src="/images/cach.png" alt="" className='hidden lg:block  absolute bottom-0 translate-y-2/3' />
+            <img src="/images/cach.png" alt="" className='hidden w-full lg:block absolute top-0 -translate-y-2/3' />
+            <img src="/images/cach.png" alt="" className='hidden w-full lg:block  absolute bottom-0 translate-y-2/3' />
             <img src={image} alt={'photo du projet ' + name} className='object-cover h-full w-full lg:w-[90%]' />
         </div>
     </div>
