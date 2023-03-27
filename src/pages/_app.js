@@ -1,6 +1,6 @@
 import Header from '@/components/Header'
 import '@/styles/globals.css'
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { initializeApp } from "firebase/app";

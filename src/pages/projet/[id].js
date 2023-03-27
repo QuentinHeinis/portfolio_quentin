@@ -1,44 +1,49 @@
 import { collection, doc, getDoc, getDocs, getFirestore, limit, query, where } from 'firebase/firestore'
 import { getDownloadURL, getStorage, ref } from 'firebase/storage'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import OtherProject from '@/components/OtherProject'
 import { LinkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import Head from 'next/head'
+import { easeInOut } from 'framer-motion'
+
 
 const Detail = ({ data, otherData }) => {
-
     const router = useRouter()
     const [index, setIndex] = useState(0)
     if (!data) {
         router.push('/')
     }
+    useEffect(() => {
+        var images = document.querySelectorAll('.image')
+        new simpleParallax(images, {
+            scale: 1.1,
+            transition: easeInOut
+        });
+    }, [])
+
     return (
 
 
         <div className='overflow-hidden'>
+
             <Head>
                 <title>Projet - {data.title}</title>
             </Head>
-            <div className='flex flex-col md:flex-row h-[75vh] w-4/5  pt-10 gap-4 mx-auto'>
-                <div className='w-full md:w-4/5 h-full'>
-                    <img src={data.images && data.images[index]} className='max-h-full w-full object-contain h-full' />
-                </div>
-                <div className='w-full md:mt-0 gap-1 md:w-1/5  flex md:flex-col justify-center md:gap-10'>
-                    {data.images?.map((item, i) => (
-                        <img key={i} src={item} className={i === index ? 'hidden' : 'block w-full max-w-[50%] md:max-w-full object-contain cursor-pointer'} onClick={() => setIndex(i)} />
-                    ))}
-                </div>
+            <h1 className='text-white uppercase text-4xl md:text-5xl lg:text-6xl xl:text-7xl w-4/5 mx-auto mt-32 font-antigua'>{data.title} - {data.year}</h1>
+            <div className='flex flex-col md:flex-row w-full md:w-4/5  pt-10 gap-4 mx-auto'>
+                <img src={data.images && data.images[index]} className='image max-h-full w-full object-contain h-full' />
             </div>
             <div className='flex flex-col w-4/5 mx-auto'>
-                <p className='text-[#757575] uppercase text-2xl mt-10'>Projet {data.type}</p>
-                <div className="flex justify-between items-center mt-10">
-                    <h1 className='text-white uppercase text-4xl'>{data.title} - {data.year}</h1>
-                    {data?.link && <Link href={data.link}><LinkIcon className='h-6' /></Link>}
+                <div className='flex justify-between'>
+                    <p className='text-[#757575] uppercase text-2xl mt-10'>Projet {data.type}</p>
+                    <div className="flex justify-between items-center mt-10">
+                        {data?.link && <Link href={data.link} className="flex gap-2">Voir le projet <LinkIcon className='h-6' /></Link>}
+                    </div>
                 </div>
                 <div data-aos="fade-up">
-                    <div className="flex w-full justify-between mt-24">
+                    <div className="flex w-full justify-between mt-10">
                         <h2 className='text-[#757575] uppercase text-2xl'>Langage/Logiciel utilisé</h2>
                         <span className='text-[#757575] uppercase text-2xl'>01</span>
                     </div>
@@ -68,10 +73,26 @@ const Detail = ({ data, otherData }) => {
                         <h3 className='text-[#757575] uppercase text-2xl'>Description du projet</h3>
                         <span className='text-[#757575] uppercase text-2xl '>04</span>
                     </div>
-                    {data.desc.split('\n').map((paragraph) => (
+                    {data.desc.split('\\n').map((paragraph) => (
                         <p className='text-lg md:text-2xl first-letter:uppercase' key={paragraph}>{paragraph}</p>
                     ))}
                 </div>
+                <span className='w-full h-[2px] bg-[#757575] my-6'></span>
+                <div data-aos="fade-up">
+                    <div className="flex w-full justify-between mb-6">
+                        <h3 className='text-[#757575] uppercase text-2xl'>Visuels du projet</h3>
+                        <span className='text-[#757575] uppercase text-2xl '>05</span>
+                    </div>
+                </div>
+            </div>
+            <div className='flex flex-col gap-10 mx-auto w-full md:w-4/5'>
+                {data.images?.map((item, i) => (
+                    <div key={i} className={i === index ? 'hidden' : 'flex '}>
+                        <img src={item} className='image w-full object-contain cursor-pointer' />
+                    </div>
+                ))}
+            </div>
+            <div className='flex flex-col w-4/5 mx-auto'>
                 <span className='w-full h-[2px] bg-[#757575] my-6'></span>
                 <p className='text-xl md:text-2xl uppercase'>Copyright &copy; Quentin Heinis</p>
             </div>

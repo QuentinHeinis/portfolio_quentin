@@ -8,7 +8,7 @@ const ProjetPres = ({ props }) => {
     const [viewDetails, setViewDetails] = useState(false)
     return (
         <div className='flex flex-col items-center overflow-hidden'>
-            <div className='flex flex-col md:flex-row h-[75vh] w-4/5  pt-10 gap-4'>
+            <div className='flex flex-col md:flex-row w-4/5  pt-10 gap-4'>
                 <div className='w-full md:w-4/5 h-full' data-aos="fade-up">
                     <img src={projet.images && projet.images[index]} className='max-h-full w-full object-contain h-full' />
                 </div>
@@ -27,9 +27,9 @@ const ProjetPres = ({ props }) => {
                     {viewDetails ? (<span className='text-[#757575] uppercase text-2xl'>01</span>) : (<span className='text-[#757575] uppercase text-2xl'>+</span>)}
                 </div>
                 {viewDetails && (
-                    <div>{projet.desc.split('\\n').map((para) => (
-                        <p className='first-letter:uppercase' key={para}>{para}</p>
-                    ))}</div>
+                    <div>
+                        <p className='first-letter:uppercase'>{projet.desc.split('\\n')[0]}...</p>
+                    </div>
                 )}
 
                 <span className='w-full h-[2px] bg-[#757575] my-3'></span>

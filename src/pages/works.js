@@ -8,13 +8,16 @@ import React, { useState } from 'react'
 const works = ({ data }) => {
   const [index, setIndex] = useState(0)
   return (
-    <div className='flex flex-col gap-6 pb-10'>
+    <div className='pb-10 flex'>
       <Head>
         <title>Projets</title>
       </Head>
-      {data.map((projet) => (
-        <ProjetPres props={projet} key={projet.title} />
-      ))}
+      <div className='mt-32 flex flex-col gap-6'>
+        <h1 className='text-white uppercase text-4xl md:text-5xl lg:text-6xl xl:text-7xl w-4/5 mx-auto font-antigua'>Mes projets</h1>
+        {data.map((projet) => (
+          <ProjetPres props={projet} key={projet.title} />
+        ))}
+      </div>
     </div>
   )
 }
