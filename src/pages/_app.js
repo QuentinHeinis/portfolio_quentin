@@ -1,22 +1,14 @@
 import Header from '@/components/Header'
 import '@/styles/globals.css'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { initializeApp } from "firebase/app";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis';
 import Lenis from '@studio-freight/lenis'
-import { SwitchTransition, Transition } from 'react-transition-group'
-import gsap from 'gsap'
 import { useRouter } from 'next/router'
+import Router from 'next/router';
 
-function ScrollListener() {
-  useLenis(({ scroll }) => {
-    // console.log('Current scroll position', scroll)
-  })
-
-  return null
-}
 
 
 //config firebase
@@ -36,6 +28,8 @@ const app = initializeApp(firebaseConfig)
 
 export default function App({ Component, pageProps }) {
 
+  const [isLoading, setIsLoading] = useState()
+  const router = useRouter()
 
   //lenis setup
 
@@ -60,63 +54,36 @@ export default function App({ Component, pageProps }) {
     requestAnimationFrame(raf)
     AOS.init()
     AOS.refresh()
+
+    Router.onRouteChangeStart = () => {
+      setIsLoading(true)
+    }
+    Router.onRouteChangeComplete = () => {
+      setIsLoading(false)
+    }
   }, [])
-
-
-
-  const router = useRouter()
-
-  const onPageEnter = (element) => {
-    gsap.fromTo(
-      element,
-      {
-        y: 50,
-        autoAlpha: 0,
-        ease: 'power3.out',
-      },
-      {
-        y: 0,
-        autoAlpha: 1,
-        duration: 1,
-        ease: 'power3.out',
-      }
-    )
-  }
-
-  const onPageExit = (element) => {
-    gsap.fromTo(
-      element,
-      {
-        y: 0,
-        autoAlpha: 1,
-        ease: 'power3.out',
-      },
-      {
-        y: -50,
-        autoAlpha: 0,
-        duration: 0.5,
-        ease: 'power3.inOut',
-      }
-    )
-  }
 
 
   return (
     <ReactLenis root>
       <div className='min-h-screen bg-black text-white font-sans'>
         <Header />
-        <SwitchTransition>
-          <Transition
-            key={router.pathname}
-            timeout={500}
-            in={true}
-            onEnter={onPageEnter}
-            onExit={onPageExit}
-            mountOnEnter={true}
-            unmountOnExit={true}>
-            <Component {...pageProps} />
-          </Transition>
-        </SwitchTransition>
+        {isLoading ? (
+          <>
+            <div className="flex items-center h-screen justify-center">
+              <div
+                className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                role="status">
+                <span
+                  className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                >Loading...</span
+                >
+              </div>
+            </div>
+          </>
+        ) :
+          <Component {...pageProps} />
+        }
       </div>
     </ReactLenis>
 
