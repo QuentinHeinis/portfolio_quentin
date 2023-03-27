@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, getFirestore, limit, query, where } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, getFirestore, limit, orderBy, query, where } from 'firebase/firestore'
 import { getDownloadURL, getStorage, ref } from 'firebase/storage'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -33,7 +33,7 @@ const Detail = ({ data, otherData }) => {
             </Head>
             <h1 className='text-white uppercase text-4xl md:text-5xl lg:text-6xl xl:text-7xl w-4/5 mx-auto mt-32 font-antigua'>{data.title} - {data.year}</h1>
             <div className='flex flex-col md:flex-row w-full md:w-4/5  pt-10 gap-4 mx-auto'>
-                <img src={data.images && data.images[index]} className='image max-h-full w-full object-contain h-full' />
+                <img src={data.images && data.images[index]} className='image max-h-full w-full object-contain h-full cursor-none' />
             </div>
             <div className='flex flex-col w-4/5 mx-auto'>
                 <div className='flex justify-between'>
@@ -88,7 +88,7 @@ const Detail = ({ data, otherData }) => {
             <div className='flex flex-col gap-10 mx-auto w-full md:w-4/5'>
                 {data.images?.map((item, i) => (
                     <div key={i} className={i === index ? 'hidden' : 'flex '}>
-                        <img src={item} className='image w-full object-contain cursor-pointer' />
+                        <img src={item} className='image w-full object-contain cursor-none' />
                     </div>
                 ))}
             </div>
