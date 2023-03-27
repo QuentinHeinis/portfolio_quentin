@@ -11,21 +11,6 @@ export default function Home({ data }) {
       <Head>
         <title>Quentin Heinis</title>
       </Head>
-      <div className="flex pt-10 px-4 lg:px-24 w-screen absolute top-0 z-30">
-        <div className='flex lg:items-end flex-col lg:flex-row lg:gap-3'>
-          <div className='flex flex-col lg:text-2xl'>
-            <div>
-              QUENTIN Heinis
-            </div>
-            <div>
-              PORTFOLIO 2022/2023
-            </div>
-          </div>
-          <div className='uppercase text-[#757575] text-xs lg:text-lg'>
-            Web développeur et programmeur
-          </div>
-        </div>
-      </div>
       <Carrousel props={data} />
       <Link href="/works" className="flex items-center uppercase text-2xl mr-[10vw] right-0 absolute bottom-2 gap-2">Voir tout<ArrowRightCircleIcon className="h-6 rotate-45" /></Link>
     </>
