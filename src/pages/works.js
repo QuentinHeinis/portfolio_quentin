@@ -1,5 +1,5 @@
 import ProjetPres from '@/components/ProjetPres'
-import { collection, getDocs, getFirestore, query } from 'firebase/firestore'
+import { collection, getDocs, getFirestore, orderBy, query } from 'firebase/firestore'
 import { getDownloadURL, getStorage, ref } from 'firebase/storage'
 import Head from 'next/head'
 import React, { useState } from 'react'
@@ -25,7 +25,7 @@ export const getServerSideProps = async () => {
   let data = []
   let temp = []
   const firestore = getFirestore()
-  let q = query(collection(firestore, "projets"))
+  let q = query(collection(firestore, "projets"), orderBy('year', 'desc'))
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     temp.push({ id: doc.id, ...doc.data() })

@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.simpleParallax{
+    width: 100%;
+}
+
 
 @media (min-width:768px) {
     .slash:hover .slash0 {
